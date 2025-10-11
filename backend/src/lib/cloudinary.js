@@ -1,6 +1,7 @@
-import {v2 as cloudinary} from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 
-import { config } from 'dotenv';
+import { config } from "dotenv";
+
 config();
 
 cloudinary.config({
