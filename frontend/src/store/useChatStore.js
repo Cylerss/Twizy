@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import toast from "react-hot-toast";
-import { axiosInstance } from "../lib/axios.js";
-import { useAuthStore } from "./useAuthStore.js";
+import { axiosInstance } from "../lib/axios";
+import { useAuthStore } from "./useAuthStore";
+
 export const useChatStore = create((set, get) => ({
   messages: [],
   users: [],
@@ -12,21 +13,22 @@ export const useChatStore = create((set, get) => ({
   getUsers: async () => {
     set({ isUsersLoading: true });
     try {
-      const response = await axiosInstance.get("/messages/users");
-      set({ users: response.data }); // <-- FIXED HERE
+      const res = await axiosInstance.get("/messages/users");
+      set({ users: res.data });
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Error fetching users");
+      toast.error(error.response.data.message);
     } finally {
       set({ isUsersLoading: false });
     }
   },
-  getMessages: async (id) => {
-    set({ isMessagesLoading: true, selectedUser: id });
+
+  getMessages: async (userId) => {
+    set({ isMessagesLoading: true });
     try {
-      const response = await axiosInstance.get(`/messages/${id}`);
-      set({ messages: response.data });
+      const res = await axiosInstance.get(`/messages/${userId}`);
+      set({ messages: res.data });
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Error fetching messages");
+      toast.error(error.response.data.message);
     } finally {
       set({ isMessagesLoading: false });
     }

@@ -4,8 +4,6 @@ import { useAuthStore } from "../store/useAuthStore";
 import SidebarSkeleton from "./skeletons/SidebarSkeleton";
 import { Users } from "lucide-react";
 
-const BASE_URL = "http://localhost:5000";
-
 const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
 
@@ -23,12 +21,13 @@ const Sidebar = () => {
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
-    <aside className="min-h-screen w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
+    <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
       <div className="border-b border-base-300 w-full p-5">
         <div className="flex items-center gap-2">
           <Users className="size-6" />
           <span className="font-medium hidden lg:block">Contacts</span>
         </div>
+        {/* TODO: Online filter toggle */}
         <div className="mt-3 hidden lg:flex items-center gap-2">
           <label className="cursor-pointer flex items-center gap-2">
             <input
@@ -56,7 +55,7 @@ const Sidebar = () => {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic || "https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png"}
+                src={user.profilePic || "/avatar.png"}
                 alt={user.name}
                 className="size-12 object-cover rounded-full"
               />

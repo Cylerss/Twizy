@@ -30,10 +30,12 @@ const ProfilePage = () => {
             <p className="mt-2">Your profile information</p>
           </div>
 
+          {/* avatar upload section */}
+
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
-                src={selectedImg || authUser.profilePic || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"}
+                src={selectedImg || authUser.profilePic || "/avatar.png"}
                 alt="Profile"
                 className="size-32 rounded-full object-cover border-4 "
               />

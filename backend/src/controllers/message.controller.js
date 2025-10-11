@@ -1,6 +1,8 @@
 import User from '../models/user.model.js';
 import Message from '../models/message.model.js';
 import cloudinary from '../lib/cloudinary.js';
+import mongoose from "mongoose";
+
 export const getUserForSidebar = async (req, res) => {
   try {
     const loggedInUserId = req.user.id;
@@ -37,6 +39,10 @@ export const sendMessage = async (req, res) => {
     const {text,image} = req.body;
     const {id:receiverid} = req.params;
     const senderid = req.user.id;
+
+    if (!mongoose.Types.ObjectId.isValid(senderid)) {
+      return res.status(400).json({ message: "Invalid sender ID" });
+    }
 
     let imageUrl;
     if (image) {
