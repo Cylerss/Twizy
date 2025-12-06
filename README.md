@@ -1,6 +1,8 @@
-# ✨ Full Stack Realtime Chat App ✨
+# ✨ Full Stack Realtime Chat App - Twizy ✨
 
-![Demo App](/frontend/public/screenshot-for-readme.png)
+![Demo App](frontend/src/demo2.png)
+![Demo App](frontend/src/demo1.png)
+
 
 [Demo For App](https://twizy-ihak.onrender.com)
 
